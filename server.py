@@ -72,22 +72,23 @@ API_HOST: str         = "stock.indianapi.in"
 FETCH_INTERVAL: int   = 30       # Seconds between full refresh cycles
 MAX_WORKERS: int      = 10       # Max simultaneous HTTP requests
 REQUEST_TIMEOUT: int  = 15       # Per-request timeout in seconds
-
-INPUT_FILE: str       = "stock.json"
-OUTPUT_FILE: str      = "stock_data.json"
-LOG_FILE: str         = "stock_fetcher.log"   # "" → disable file logging
-
 STOCK_LIST_KEY: str   = "nifty50"
 
-# ── Market-data output files (one JSON per endpoint) ───────────────────
-TRENDING_OUTPUT_FILE:     str = "trending_data.json"
-IPO_OUTPUT_FILE:          str = "ipo_data.json"
-NEWS_OUTPUT_FILE:         str = "news_data.json"
-MUTUAL_FUNDS_OUTPUT_FILE: str = "mutual_funds_data.json"
-PRICE_SHOCKERS_OUTPUT_FILE: str = "price_shockers_data.json"
-BSE_MOST_ACTIVE_OUTPUT_FILE: str = "bse_most_active_data.json"
-NSE_MOST_ACTIVE_OUTPUT_FILE: str = "nse_most_active_data.json"
-WEEK_HIGH_LOW_OUTPUT_FILE:  str = "52_week_high_low_data.json"
+# New — add DATA_DIR prefix to all file paths
+DATA_DIR_PATH = "/home/ubuntu/stockapp/data"
+
+INPUT_FILE:  str = f"{DATA_DIR_PATH}/stock.json"
+OUTPUT_FILE: str = f"{DATA_DIR_PATH}/stock_data.json"
+LOG_FILE:    str = f"{DATA_DIR_PATH}/stock_fetcher.log"
+
+TRENDING_OUTPUT_FILE:       str = f"{DATA_DIR_PATH}/trending_data.json"
+IPO_OUTPUT_FILE:            str = f"{DATA_DIR_PATH}/ipo_data.json"
+NEWS_OUTPUT_FILE:           str = f"{DATA_DIR_PATH}/news_data.json"
+MUTUAL_FUNDS_OUTPUT_FILE:   str = f"{DATA_DIR_PATH}/mutual_funds_data.json"
+PRICE_SHOCKERS_OUTPUT_FILE: str = f"{DATA_DIR_PATH}/price_shockers_data.json"
+BSE_MOST_ACTIVE_OUTPUT_FILE: str = f"{DATA_DIR_PATH}/bse_most_active_data.json"
+NSE_MOST_ACTIVE_OUTPUT_FILE: str = f"{DATA_DIR_PATH}/nse_most_active_data.json"
+WEEK_HIGH_LOW_OUTPUT_FILE:  str = f"{DATA_DIR_PATH}/52_week_high_low_data.json"
 
 # How often each market-data endpoint is refreshed (seconds).
 # All endpoints share one coordinated cycle — set to taste.
@@ -1093,4 +1094,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
+
     main()
